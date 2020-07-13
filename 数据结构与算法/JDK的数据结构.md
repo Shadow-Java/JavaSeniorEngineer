@@ -1,6 +1,6 @@
 # 以下是Java中常用的数据结构的基础知识
 
-<img align="center" src="../图片/Java集合框架（1）.png"/>
+<img align="center" src="https://picturestr.oss-cn-shanghai.aliyuncs.com/img/20200713220955.png">
 
 Java集合类主要由两个根接口`Collection`和`Map`派生出来的，`Collection`派生出了三个子接口：`List`、`Set`、`Queue`（Java5新增的队列）
 
@@ -15,7 +15,7 @@ Queue是队列集合；Map代表的是存储key-value对的集合，可根据元
 # 1 List家族
 List<E>接口继承图：
 
-<img align="center" src="../图片/List家族.png"/>
+<img align="center" src="https://picturestr.oss-cn-shanghai.aliyuncs.com/img/20200713221109.png"/>
 
 `JDK`中的List家族主要包括了`ArrayList`、 `LinkedList`、`Vector`、`CopyOnWriteArrayList`、`UnmodifiableList` 、`SynchronizedList`
 

@@ -1,6 +1,6 @@
 # 本章节数据库技术按照导图展开，如下：
 
-<img src="https://picturestr.oss-cn-shanghai.aliyuncs.com/img/20200712233449.png" align="center" alt="思维导图">
+<img src="https://picturestr.oss-cn-shanghai.aliyuncs.com/img/20200712233449.png" align="center" alt="数据库学习导图">
 
 # 数据库基础原理
 
@@ -189,4 +189,4 @@ CREATE TABLE students (
 
 ### 第一范式（1NF）
 
-数据库的
+数据库的 Java went from starting to giving up！Insist on playing.
