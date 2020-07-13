@@ -9,7 +9,7 @@
 
 ## cmd命令行登录和退出MySQL服务器
 
-```jshelllanguage
+```markdown
 # 登录MySQL
 $ mysql -u root -p12345612
 
