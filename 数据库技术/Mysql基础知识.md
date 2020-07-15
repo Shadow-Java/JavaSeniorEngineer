@@ -2,8 +2,9 @@
 
 <img src="https://picturestr.oss-cn-shanghai.aliyuncs.com/img/20200712233449.png" align="center" alt="数据库学习导图" height="1200" width="1000">
 
-# 数据库基础原理
 
+# 数据库基础原理
+学习来源：[数据库](https://www.bilibili.com/video/BV1Vt411z7wy?p=19)
 数据库主要分为：关系型数据库和非关系型数据库。
 关系型数据库的代表有：`MySQL`，非关系型数据库代表有：`MongonDB`
 
@@ -298,7 +299,7 @@ USE select_test;
 
 -- 创建学生表
 CREATE TABLE student (
-    no VARCHAR(20) PRIMARY KEY,
+    sno VARCHAR(20) PRIMARY KEY,
     name VARCHAR(20) NOT NULL,
     sex VARCHAR(10) NOT NULL,
     birthday DATE, -- 生日
@@ -307,7 +308,7 @@ CREATE TABLE student (
 
 -- 创建教师表
 CREATE TABLE teacher (
-    no VARCHAR(20) PRIMARY KEY,
+    tno VARCHAR(20) PRIMARY KEY,
     name VARCHAR(20) NOT NULL,
     sex VARCHAR(10) NOT NULL,
     birthday DATE,
@@ -317,23 +318,23 @@ CREATE TABLE teacher (
 
 -- 创建课程表
 CREATE TABLE course (
-    no VARCHAR(20) PRIMARY KEY,
+    cno VARCHAR(20) PRIMARY KEY,
     name VARCHAR(20) NOT NULL,
-    t_no VARCHAR(20) NOT NULL, -- 教师编号
+    tno VARCHAR(20) NOT NULL,-- 教师编号
     -- 表示该 tno 来自于 teacher 表中的 no 字段值
-    FOREIGN KEY(t_no) REFERENCES teacher(no) 
+    FOREIGN KEY(tno) REFERENCES teacher(tno) 
 );
-
+ 
 -- 成绩表
 CREATE TABLE score (
-    s_no VARCHAR(20) NOT NULL, -- 学生编号
-    c_no VARCHAR(20) NOT NULL, -- 课程号
+    sno VARCHAR(20) NOT NULL, -- 学生编号
+    cno VARCHAR(20) NOT NULL, -- 课程号
     degree DECIMAL,	-- 成绩
     -- 表示该 s_no, c_no 分别来自于 student, course 表中的 no 字段值
-    FOREIGN KEY(s_no) REFERENCES student(no),	
-    FOREIGN KEY(c_no) REFERENCES course(no),
+    FOREIGN KEY(sno) REFERENCES student(sno),	
+    FOREIGN KEY(cno) REFERENCES course(cno),
     -- 设置 s_no, c_no 为联合主键
-    PRIMARY KEY(s_no, c_no)
+    PRIMARY KEY(sno,cno)
 );
 
 -- 查看所有表
@@ -387,7 +388,7 @@ SELECT * FROM teacher;
 SELECT * FROM student;
 
 -- 查询 student 表中的 name、sex 和 class 字段的所有行
-SELECT name, sex, class FROM student;
+SELECT name,sex,class FROM student;
 
 -- 查询 teacher 表中不重复的 department 列
 -- department: 去重查询
@@ -412,8 +413,8 @@ SELECT * FROM student WHERE class = '95031' or sex = '女';
 SELECT * FROM student ORDER BY class DESC;
 SELECT * FROM student ORDER BY class ASC;
 
--- 以 c_no 升序、degree 降序查询 score 表的所有行
-SELECT * FROM score ORDER BY c_no ASC, degree DESC;
+-- 以 cno 升序、degree 降序查询 score 表的所有行
+SELECT * FROM score ORDER BY cno ASC, degree DESC;
 
 -- 查询 "95031" 班的学生人数
 -- COUNT: 统计
@@ -421,7 +422,7 @@ SELECT COUNT(*) FROM student WHERE class = '95031';
 
 -- 查询 score 表中的最高分的学生学号和课程编号（子查询或排序查询）。
 -- (SELECT MAX(degree) FROM score): 子查询，算出最高分
-SELECT s_no, c_no FROM score WHERE degree = (SELECT MAX(degree) FROM score);
+SELECT sno, cno FROM score WHERE degree = (SELECT MAX(degree) FROM score);
 
 --  排序查询
 -- LIMIT r, n: 表示从第r行开始，查询n条数据
@@ -450,7 +451,7 @@ SELECT c_no, AVG(degree) FROM score GROUP BY c_no;
 SELECT * FROM score;
 -- c_no 课程编号
 +------+-------+--------+
-| s_no | c_no  | degree |
+| sno | cno  | degree |
 +------+-------+--------+
 | 103  | 3-105 |     92 |
 | 103  | 3-245 |     86 |
@@ -490,7 +491,7 @@ AND c_no LIKE '3%';
 SELECT c_no, AVG(degree), COUNT(*) FROM score GROUP BY c_no
 HAVING COUNT(c_no) >= 2 AND c_no LIKE '3%';
 +-------+-------------+----------+
-| c_no  | AVG(degree) | COUNT(*) |
+| cno  | AVG(degree) | COUNT(*) |
 +-------+-------------+----------+
 | 3-105 |     85.3333 |        3 |
 | 3-245 |     76.3333 |        3 |
@@ -517,9 +518,9 @@ SELECT no, name FROM student;
 | 109 | 赵铁柱    |
 +-----+-----------+
 
-SELECT s_no, c_no, degree FROM score;
+SELECT sno, cno, degree FROM score;
 +------+-------+--------+
-| s_no | c_no  | degree |
+| sno | cno  | degree |
 +------+-------+--------+
 | 103  | 3-105 |     92 |
 | 103  | 3-245 |     86 |
@@ -533,12 +534,12 @@ SELECT s_no, c_no, degree FROM score;
 +------+-------+--------+
 ```
 
-通过分析可以发现，只要把 `score` 表中的 `s_no` 字段值替换成 `student` 表中对应的 `name` 字段值就可以了，如何做呢？
+通过分析可以发现，只要把 `score` 表中的 `sno` 字段值替换成 `student` 表中对应的 `name` 字段值就可以了，如何做呢？
 
 ```mysql
 -- FROM...: 表示从 student, score 表中查询
 -- WHERE 的条件表示为，只有在 student.no 和 score.s_no 相等时才显示出来。
-SELECT name, c_no, degree FROM student, score 
+SELECT name, cno, degree FROM student,score 
 WHERE student.no = score.s_no;
 +-----------+-------+--------+
 | name      | c_no  | degree |
