@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="30353410-7c0c-45d1-a270-a2ddd7c4edf6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/面试经验和问题总结/每日一题.md" beforeDir="false" afterPath="$PROJECT_DIR$/面试经验和问题总结/每日一题.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/数据库技术/Mysql基础知识.md" beforeDir="false" afterPath="$PROJECT_DIR$/数据库技术/Mysql基础知识.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,12 +13,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
             <state split_layout="FIRST">
               <first_editor relative-caret-position="503">
-                <caret line="42" column="31" lean-forward="true" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
+                <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+              </first_editor>
+              <second_editor>
+                <markdownNavigatorState />
+              </second_editor>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/数据库技术/Mysql基础知识.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+            <state split_layout="FIRST">
+              <first_editor relative-caret-position="57">
+                <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
               </first_editor>
               <second_editor>
                 <markdownNavigatorState />
@@ -58,10 +71,10 @@
         <option value="$PROJECT_DIR$/数据结构与算法/JDK的数据结构.md" />
         <option value="$PROJECT_DIR$/面试经验和问题总结/常见的面试笔记.md" />
         <option value="$PROJECT_DIR$/相关书籍链接下载.md" />
-        <option value="$PROJECT_DIR$/数据库技术/Mysql基础知识.md" />
         <option value="$PROJECT_DIR$/面试经验和问题总结/每日一题.md" />
         <option value="$PROJECT_DIR$/四大发明总览/LeetCode.md" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/数据库技术/Mysql基础知识.md" />
       </list>
     </option>
   </component>
@@ -114,7 +127,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1594810561106" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1594819070963" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -186,7 +199,7 @@
       <workItem from="1594710739592" duration="7507000" />
       <workItem from="1594777771466" duration="35000" />
       <workItem from="1594780283000" duration="27000" />
-      <workItem from="1594807298803" duration="1841000" />
+      <workItem from="1594807298803" duration="2508000" />
     </task>
     <task id="LOCAL-00001" summary="add mysql">
       <created>1594649804105</created>
@@ -244,11 +257,18 @@
       <option name="project" value="LOCAL" />
       <updated>1594775489602</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="update README.md">
+      <created>1594810620128</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1594810620128</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80030000" />
+    <option name="totallyTimeSpent" value="80697000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -451,18 +471,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/数据库技术/Mysql基础知识.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="304">
-            <caret line="582" lean-forward="true" selection-start-line="582" selection-end-line="582" />
-          </first_editor>
-          <second_editor>
-            <markdownNavigatorState />
-          </second_editor>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/面试经验和问题总结/每日一题.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
         <state split_layout="FIRST">
@@ -503,7 +511,19 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
         <state split_layout="FIRST">
           <first_editor relative-caret-position="503">
-            <caret line="42" column="31" lean-forward="true" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
+            <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+          </first_editor>
+          <second_editor>
+            <markdownNavigatorState />
+          </second_editor>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/数据库技术/Mysql基础知识.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="57">
+            <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
           </first_editor>
           <second_editor>
             <markdownNavigatorState />

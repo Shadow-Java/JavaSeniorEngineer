@@ -1,7 +1,8 @@
 # 本章节数据库技术按照导图展开，如下：
 
-<img src="https://picturestr.oss-cn-shanghai.aliyuncs.com/img/20200712233449.png" align="center" alt="数据库学习导图" height="1200" width="1000">
-
+<div align="center">
+    <img src="https://picturestr.oss-cn-shanghai.aliyuncs.com/img/20200712233449.png" align="center" alt="数据库学习导图" height="1200" width="1000">
+</div>
 
 # 数据库基础原理
 学习来源：[数据库](https://www.bilibili.com/video/BV1Vt411z7wy?p=19)
