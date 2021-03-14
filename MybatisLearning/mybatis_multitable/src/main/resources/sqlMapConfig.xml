@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+    <!--加载外部的properties配置文件-->
+    <properties resource="jdbc.properties"></properties>
+    <!--开启二级缓存-->
+    <settings>
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+
+    <!--给实体类的全限定类型取别名-->
+    <!--<typeAliases>-->
+        <!--&lt;!&ndash;给单独的实体取别名&ndash;&gt;-->
+        <!--&lt;!&ndash;<typeAlias type="com.lagou.pojo.User" alias="user"></typeAlias>&ndash;&gt;-->
+        <!--&lt;!&ndash;批量取别名，且不区分大小写&ndash;&gt;-->
+        <!--<package name="com.lagou.pojo"></package>-->
+    <!--</typeAliases>-->
+    
+    <plugins>
+        <plugin interceptor="com.lagou.plugin.MyPlugin">
+            <!--配置插件参数-->
+            <property name="name" value="name"></property>
+        </plugin>
+        <!--声明插件类-->
+        <plugin interceptor="com.github.pagehelper.PageHelper">
+            <!--配置插件参数,不同的数据库配置得参数不一致-->
+            <property name="dialect" value="mysql"></property>
+        </plugin>
+        <plugin interceptor="tk.mybatis.mapper.mapperhelper.MapperInterceptor">
+            <!--指定当前通用mapper接口是哪一个-->
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"></property>
+        </plugin>
+    </plugins>
+
+    <environments default="development">
+        <environment id="development">
+            <!--事務管理，当前交由jdbc管理-->
+            <transactionManager type="JDBC"/>
+            <!--当前使用mybatis提供的连接池-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <!--如果使用package  com.lagou.mapper,则xml和dao需要同个目录下，只需要声明文件夹路径-->
+        <!--<mapper resource="com/lagou/mapper/IUserMapper.xml"></mapper>-->
+        <!--<mapper resource="com/lagou/mapper/IOrderMapper.xml"></mapper>-->
+        <!--使用注解开发，必须要引入包-->
+        <package name="com.lagou.mapper"></package>
+    </mappers>
+
+</configuration>
