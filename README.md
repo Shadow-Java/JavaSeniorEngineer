@@ -1,29 +1,51 @@
 
-| JavaSE | Java开发框架 | 四大发明总览 | 数据库技术 | 分布式核心技术 | 微服务| 前端技术| 面试经验和问题总结| 相关书籍 |
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|[:pen:](#JavaSE)|[:panda_face:](#Java开发框架)|[:book:](#四大发明总览)|[:squirrel:](#数据库技术)|[:person_fencing:](#分布式核心技术)|[:satellite:](#微服务)|[:iphone:](#前端技术)|[:question:](#面试经验和问题总结)|[:link: ](#相关书籍)|
+| 语言 | 数据库 | 四大发明 | 面试经验与技巧 | 项目 | 网站推荐 | 工作场景问题|
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|[:pen:](#1Languages)|[:basecamp:](#2数据库)|[:book:](#3四大发明)|[:squirrel:](#4面试经验与技巧)|[:person_fencing:](#5项目)|[:satellite:](#6网站推荐)|[:iphone:](#7工作场景问题)|
 
-## Languages
+> 间歇性平躺，持续性输出
 
-### Java
+# 1Languages
 
-#### Jvm
+## 1.1 Java
 
-[JavaSE（一）](https://github.com/liyuanbo1997/JavaSeniorEngineer/blob/master/JavaSE/JavaSE(一).md)
+### 1.1.1 Java基础
+### 1.1.2 JVM
+### 1.1.3 JDK源码
+### 1.1.4 微服务
+### 1.1.5 分布式
+### 1.1.6 容器化
+### 1.1.7 中间价
+### 1.1.8 开源框架
+### 1.1.9 搜索引擎
+### 1.1.10 分布式缓存
 
-[JavaSE（二）](https://github.com/liyuanbo1997/JavaSeniorEngineer/blob/master/JavaSE/JavaSE(二).md)
+## 1.2 Python
+### 1.2.1 Python基础
+### 1.2.2 大数据
 
-[JavaSE（三）](https://github.com/liyuanbo1997/JavaSeniorEngineer/blob/master/JavaSE/JavaSE(三).md)
+## 1.3 Go
 
-[JavaSE（四）](https://github.com/liyuanbo1997/JavaSeniorEngineer/blob/master/JavaSE/JavaSE(四).md)
+## 1.3 算法
 
-[JavaSE（五）](https://github.com/liyuanbo1997/JavaSeniorEngineer/blob/master/JavaSE/JavaSE(五).md)
+# 2数据库
+## 2.1 mysql
+### 2.1.1 mysql基础
 
-## Java开发框架
+[Mysql基础知识](https://github.com/liyuanbo1997/JavaSeniorEngineer/blob/master/数据库技术/Mysql基础知识.md)
 
-无
+[MySQL进阶技术](https://github.com/liyuanbo1997/JavaSeniorEngineer/blob/master/数据库技术/MySQL进阶技术.md)
 
-## 四大发明总览
+# 3四大发明
+
+## 3.1 数据结构
+## 3.2 操作系统
+## 3.3 计算机网络
+## 3.4 计算机组成原理
+
+
+
+# 3 四大发明总览
 [数据结构(西安电子科技大学)](https://github.com/liyuanbo1997/JavaSeniorEngineer/blob/master/四大发明总览/JDK的数据结构.md)
 
 [操作系统](https://github.com/liyuanbo1997/JavaSeniorEngineer/blob/master/四大发明总览/操作系统.md)
@@ -32,28 +54,26 @@
 
 [计算机网络](https://github.com/liyuanbo1997/JavaSeniorEngineer/blob/master/四大发明总览/计算机网络.md)
 
-## 数据库
+# 4面试经验与技巧
 
-### mysql
-
-[Mysql基础知识](https://github.com/liyuanbo1997/JavaSeniorEngineer/blob/master/数据库技术/Mysql基础知识.md)
-
-[MySQL进阶技术](https://github.com/liyuanbo1997/JavaSeniorEngineer/blob/master/数据库技术/MySQL进阶技术.md)
-
-## 分布式核
-
-
-## 微服务
-## 前端技术
-## 面试经验和问题总结
 [常见的面试笔记](https://github.com/liyuanbo1997/JavaSeniorEngineer/blob/master/面试经验和问题总结/常见的面试笔记.md)
+
+# 5项目
+
+# 6网站推荐
+
+# 7工作场景问题
+
+
 
 [每日一题](https://github.com/liyuanbo1997/JavaSeniorEngineer/blob/master/面试经验和问题总结/每日一题.md)
 ## 相关书籍
 [相关书籍连接下载](https://github.com/liyuanbo1997/JavaSeniorEngineer/blob/master/相关书籍连接下载.md)
 
-本项目主要是用于自己学习和做一些笔记，不用做任何其他盈利用途。
+# 8 笔记
 
-大部分是从网上视频、百度等自己查找所得，有一部分是直接复制粘贴，能够找到的我一定会贴上网址。
+https://developer.aliyun.com/article/792619 怎么去搭建一个秒杀系统
 
-一起学习一起进步！每天更新一点点，就会成功！ Keep coding!
+https://www.cnblogs.com/trunks2008/p/15565671.html java agent
+
+压测分流使用agent好 还是用aop
