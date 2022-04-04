@@ -1,7 +1,7 @@
 
 | 语言 | 数据库 | 四大发明 | 面试经验与技巧 | 项目 | 网站推荐 | 工作场景问题|
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|[:pen:](#1Languages)|[:basecamp:](#2数据库)|[:book:](#3四大发明)|[:squirrel:](#4面试经验与技巧)|[:person_fencing:](#5项目)|[:satellite:](#6网站推荐)|[:iphone:](#7工作场景问题)|
+|[:large_blue_circle:](#1Languages)|[:basecamp:](#2数据库)|[:book:](#3四大发明)|[:school:](#4面试经验与技巧)|[:person_fencing:](#5项目)|[:satellite:](#6网站推荐)|[:iphone:](#7工作场景问题)|
 
 > 间歇性平躺，持续性输出
 
@@ -70,10 +70,11 @@
 ## 相关书籍
 [相关书籍连接下载](https://github.com/liyuanbo1997/JavaSeniorEngineer/blob/master/相关书籍连接下载.md)
 
-# 8 笔记
+# 8 待办事项
 
 https://developer.aliyun.com/article/792619 怎么去搭建一个秒杀系统
 
 https://www.cnblogs.com/trunks2008/p/15565671.html java agent
 
 压测分流使用agent好 还是用aop
+https://www.jianshu.com/p/63c328ca208d
