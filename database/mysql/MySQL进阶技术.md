@@ -3,9 +3,14 @@
 <img src="https://picturestr.oss-cn-shanghai.aliyuncs.com/img/20200713220714.png" align="center" alt="数据库进阶学习导图">
 
 
-https://juejin.cn/post/6844903967365791752
+_https://juejin.cn/post/6844903967365791752
 
 
 MySQL 查询 树结构
 
-https://blog.csdn.net/qq_34997906/article/details/94007556  
+https://blog.csdn.net/qq_34997906/article/details/94007556_  
+
+
+解决：Lock wait timeout exceeded; try restarting transaction
+
+https://www.cnblogs.com/christopherchan/p/12390819.html
