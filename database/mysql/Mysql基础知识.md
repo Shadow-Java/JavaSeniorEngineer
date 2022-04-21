@@ -5,6 +5,7 @@
 </div>
 
 # 数据库基础原理
+
 学习来源：[数据库](https://www.bilibili.com/video/BV1Vt411z7wy?p=19)
 数据库主要分为：关系型数据库和非关系型数据库。
 关系型数据库的代表有：`MySQL`，非关系型数据库代表有：`MongonDB`
@@ -70,6 +71,7 @@ DELETE FROM pet where name = 'squirrel';
 -- 删除表
 DROP TABLE myorder;
 ```
+
 ## 建表约束
 
 ### 主键约束（PRIMARY KEY）
@@ -194,6 +196,7 @@ CREATE TABLE students (
 数据库中的所有字段都是`不可分割`的原子值
 
 字段值可以拆分的就不满足第一范式
+
 ```mysql
 create table student(
     id int primary key,
@@ -213,7 +216,7 @@ create table student(
 );
 
 -- 假设detail字段不能拆分，则满足第一范式
-``` 
+```
 
 ### 第二范式（2NF）
 
@@ -268,6 +271,7 @@ CREATE TABLE myorder (
     customer_phone VARCHAR(15)
 );
 ```
+
 在上述的订单表中，`customer_phone`依赖于`order_id`,也有可能依赖于`customer_id`。就是`customer_id`可以通过`order_id`找到，`customer_phone`需要通过`customer_id`找到，所以依赖关系产生冗余。
 
 若将其拆分：
@@ -332,7 +336,7 @@ CREATE TABLE score (
     cno VARCHAR(20) NOT NULL, -- 课程号
     degree DECIMAL,	-- 成绩
     -- 表示该 s_no, c_no 分别来自于 student, course 表中的 no 字段值
-    FOREIGN KEY(sno) REFERENCES student(sno),	
+    FOREIGN KEY(sno) REFERENCES student(sno),
     FOREIGN KEY(cno) REFERENCES course(cno),
     -- 设置 s_no, c_no 为联合主键
     PRIMARY KEY(sno,cno)
@@ -1584,7 +1588,7 @@ SELECT * FROM user;
 +----+------+-------+
 ```
 
-那如何将虚拟的数据真正提交到数据库中？使用 `COMMIT` : 
+那如何将虚拟的数据真正提交到数据库中？使用 `COMMIT` :
 
 ```mysql
 INSERT INTO user VALUES (2, 'b', 1000);
@@ -1610,13 +1614,10 @@ SELECT * FROM user;
 > 1. **自动提交**
 >
 >    - 查看自动提交状态：`SELECT @@AUTOCOMMIT` ；
->
 >    - 设置自动提交状态：`SET AUTOCOMMIT = 0` 。
->
 > 2. **手动提交**
 >
 >    `@@AUTOCOMMIT = 0` 时，使用 `COMMIT` 命令提交事务。
->
 > 3. **事务回滚**
 >
 >    `@@AUTOCOMMIT = 0` 时，使用 `ROLLBACK` 命令回滚事务。
@@ -1727,15 +1728,12 @@ ROLLBACK;
 1. **READ UNCOMMITTED ( 读取未提交 )**
 
    如果有多个事务，那么任意事务都可以看见其他事务的**未提交数据**。
-
 2. **READ COMMITTED ( 读取已提交 )**
 
    只能读取到其他事务**已经提交的数据**。
-
 3. **REPEATABLE READ ( 可被重复读 )**
 
    如果有多个连接都开启了事务，那么事务之间不能共享数据记录，否则只能共享已提交的记录。
-
 4. **SERIALIZABLE ( 串行化 )**
 
    所有的事务都会按照**固定顺序执行**，执行完一个事务后再继续执行下一个事务的**写入操作**。
