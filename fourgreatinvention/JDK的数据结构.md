@@ -13,6 +13,7 @@ Queue是队列集合；Map代表的是存储key-value对的集合，可根据元
 上图中淡绿色背景覆盖的是集合体系中常用的实现类，分别是`ArrayList`、`LinkedList`、`ArrayQueue`、`HashSet`、`TreeSet`、`HashMap`、`TreeMap`等实现类
 
 # 1 List家族
+
 List<E>接口继承图：
 
 <img align="center" src="https://picturestr.oss-cn-shanghai.aliyuncs.com/img/20200713221109.png"/>
@@ -68,48 +69,61 @@ List类在Java.awt包里，List<E>在java.util包里,但使用时是用List\<E>
         for(String item : list){
             System.out.print(item + " ");
         }//output:b
-        
+      
     }
 ```
 
 **注意**：输出的是`["a","b","c"]`，带有`[]`
 
 ### 1.1.2 List常用方法总结
-#### （1）void add(Object element)
-向列表的尾部添加指定的元素 
 
-#### （2）int size()  
+#### （1）void add(Object element)
+
+向列表的尾部添加指定的元素
+
+#### （2）int size()
+
 返回列表中的元素个数
 
-#### （3）E get(int  index)   
+#### （3）E get(int  index)
+
 返回列表中指定位置的元素，index从0开始
 
-#### （4）void add(int index, Object element)  
+#### （4）void add(int index, Object element)
+
 在列表的指定位置插入指定元素
 
-#### （5）void set(int i, Object element) 
+#### （5）void set(int i, Object element)
+
 将索引i位置元素替换为元素element并返回被替换的元素
 
-#### （6）void clear()  
+#### （6）void clear()
+
 从列表中移除所有元素
 
-#### （7）boolean isEmpty()  
+#### （7）boolean isEmpty()
+
 判断列表是否包含元素，不包含元素则返回 true，否则返回false
 
-#### （8）iterator()  
+#### （8）iterator()
+
 返回按适当顺序在列表的元素上进行迭代的迭代器
 
-#### （9）boolean contains(Object o)  
+#### （9）boolean contains(Object o)
+
 如果列表包含指定的元素，则返回 true
 
-#### （10）E remove(int  index)  
+#### （10）E remove(int  index)
+
 移除列表中指定位置的元素，并返回被删元素
 
-#### （11）boolean remove(Object o)  
+#### （11）boolean remove(Object o)
+
 移除集合中第一次出现的指定元素，移除成功返回true，否则返回false
 
 #### （12）void forEach(ConSumer<? super T> action)
-forEach是for的增强版 其中System.out::println这段代码其实就是Consumer<T>接口的一个实现方式 
+
+forEach是for的增强版 其中System.out::println这段代码其实就是Consumer<T>接口的一个实现方式
 
 ```java
 list.forEach(System.out::println);//output:b
@@ -117,6 +131,7 @@ list.forEach(System.out::println);//output:b
             System.out.println(item);//item就是list中的元素，便于对括号里面的元素做处理
         });//output:b
 ```
+
 #### （13）toArray
 
 ```java
@@ -126,18 +141,20 @@ list.forEach(System.out::println);//output:b
          list.toArray(arr);//此时arr就有了list中的值了
          //方法2，使用带参数的toArray方法
          String[] arr2=(String[])list.toArray(new String[0]);//参数含义的解释：要存储列表中元素的数组，如果它足够大的话；否则为此目的分配一个运行时类型相同的新数组。
-         
-         
+       
+       
 ```
+
 **注意：** 下面方法写法错误
 
-> String[]arr=(String[])list.toArray();//会出现java.lang.ClassCastException 
+> String[]arr=(String[])list.toArray();//会出现java.lang.ClassCastException
 
 ## 1.2 ArrayList
 
 ArrayList是集合的一种实现，实现了接口`List`，List接口继承了`Collection`接口，而Collection是所有集合类的父类。ArrayList使用非常广泛，不论是数据库表查询，excel导入解析，还是网站数据爬取都需要使用到，了解ArrayList原理及使用方法显得非常重要。
 
 ### 1.2.1 定义一个ArrayList
+
 ```java
 List<String> list = new ArrayList<>();
 //默认创建一个ArrayList集合
@@ -230,17 +247,16 @@ public class ArrayList<E> extends AbstractList<E> implements List<E>, RandomAcce
     }
 }
 ```
-从源码可以看出，ArrayList非线程安全，底层是一个`Object[]
-elementData`，添加到ArrayList中的数据保存在了elementData属性中，
-有第三个构造函数：`ArrayList()`、`ArrayList(int
-initialCapacity)`、`ArrayList(Collection<? extends E> c)`。
+
+从源码可以看出，ArrayList非线程安全，底层是一个`Object[] elementData`，添加到ArrayList中的数据保存在了elementData属性中，
+有第三个构造函数：`ArrayList()`、`ArrayList(int initialCapacity)`、`ArrayList(Collection<? extends E> c)`。
 
 + 当调用`new ArrayList<>()`时，将一个空数组{}赋值给了elementData，这个时候集合的长度size为默认长度0；
 + 当调用`new ArrayList<>(100)`时，根据传入的长度，new一个Object[100]赋值给elementData，当然如果玩儿的话，传了一个0，那么将一个空数组{}赋值给了elementData；
 + 当调用`new ArrayList<>(new HashSet())`时，根据源码，我们可知，可以传递任何实现了Collection接口的类，将传递的集合调用`toArray()`方法转为数组内赋值给elementData;
 
-
 #### tips:线程安全与线程不安全理解
+
 线程安全就是`多线程访问`时，采用了`加锁`机制，当一个线程访问该类的某个数据时，进行保护，其他线程不能进行访问直到该线程读取完，其他线程才可使用。不会出现数据不一致或者数据污染。
 
 线程不安全就是`不提供数据访问保护`，有可能出现多个线程先后更改数据造成所得到的数据是`脏数据`
@@ -259,7 +275,7 @@ initialCapacity)`、`ArrayList(Collection<? extends E> c)`。
 而如果是在多线程情况下，比如有两个线程，线程 A 先将元素存放在位置 0。但是此时 CPU 调度线程A暂停，线程 B 得到运行的机会。线程B也向此 ArrayList 添加元素，因为此时 Size 仍然等于 0 （注意哦，我们假设的是添加一个元素是要两个步骤哦，而线程A仅仅完成了步骤1），所以线程B也将元素存放在位置0。然后线程A和线程B都继续运行，都增加 Size 的值。
 那好，我们来看看 ArrayList 的情况，元素实际上只有一个，存放在位置 0，而 Size 却等于 2。这就是“线程不安全”了。
 
-##### 不可变： 
+##### 不可变：
 
 不可变的对象**一定**是**线程安全**的，并且永远也不需要额外的同步
 因为一个不可变的对象只要构建正确，其外部可见状态永远也不会改变，永远也不会看到它处于不一致的状态。Java
@@ -267,7 +283,9 @@ initialCapacity)`、`ArrayList(Collection<? extends E> c)`。
 需要注意的是，对于Integer，该类不提供add方法，加法是使用+来直接操作。而+操作是不具线程安全的。这是提供原子操作类AtomicInteger的原。
 
 ### 1.2.2 数组、ArrayList中的区别
+
 数组在内存中是连续存储的，所以它的索引速度是非常的快，而且赋值与修改元素也很简单，比如：
+
 ```java
 string[] s=new string[3];
 //赋值
@@ -275,18 +293,25 @@ string[] s=new string[3];
 //修改
  s[1]="b1";
 ```
+
 总所周知，数组在中间插入数据时，会移动后面的数据。而且在声明数组时，必须指明数组长度，长度过长会造成内存溢出，长度过短，会造成数据溢出错误，所以ArrayList对象可以克服这些缺点。
 
 ## 1.3 LinkedList
 
-
 ## 1.4 Vector
+
 ## 1.5 CopyOnWriteArrayList
+
 ## 1.6 UnmodifiableList
+
 ## 1.7 SynchronizedList
 
 # 2 Set家族
+
 ## 2.1 Set
+
 ## 2.2 HashSet
+
 ### 2.2.1 HashSet集合是不支持排序的，但是我们可以通过TreeSet集合对其进行间接排序
+
 https://blog.csdn.net/jmj18756235518/article/details/81557356

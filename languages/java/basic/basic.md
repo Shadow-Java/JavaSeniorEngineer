@@ -304,3 +304,84 @@ abstract对于接口来说是多余的，一般不这么使用
 ```
 boolean type = shadow instanceof String; // 判断 shadow是 String 类型，所以返回真
 ```
+
+## 5 Exception
+
+程序并不会一直顺利执行，那么就经常会导致异常情况，异常类就能很好的解决这种情况。试想，如果没有异常会怎么样？
+什么样的场景会使用异常？
+
+![](https://picturestr.oss-cn-shanghai.aliyuncs.com/javaseniorengineer/language/java/basic/202204252148340.png)
+
+### 5.1 产生异常情况
+
+1. Java内部错误发生的异常、JVM虚拟机产生的异常；
+2. 编写代码中错误产生的异常，如空指针、数组越界等；
+3. 通过throw语句手动生成的异常，一般告知方法调用者的信息；
+
+### 5.2 异常类型
+
+Throwable是所有`异常（Exception）`和`错误（Error）`的超类，Error是程序无法处理的，大多数错误与代码编写者无关，一般是虚拟机出现的问题。
+
+比如虚拟机运行异常（Virtual MachineError）、内存溢出异常（OutOfMemoryError）或是类定义错误（NoClassDefFoundError），这些错误都是不可查的，当你出现这些错误是不会被编译的。
+
+程序分为**编译过程**（java文件->class字节码文件，javac.exe）和**运行过程**（内存加载类、执行类，java.exe），运行过程需要用到JVM的加载器和运行器运行程序，比如虚拟机自己就出错，这些都是JVM无法解决的问题，一般不会通过代码处理。
+
+异常可以通过一般性代码提前预知处理，如果不处理就会导致程序的中止。异常的捕获（异常也是个类，需要捕获处理）最好是在编译期，但有些异常只有在运行时才会被发现。其中说的异常指的就是Exception，异常又分为运行时异常（RuntimeException，又称非受检异常，指编译不会检查）和非运行时异常（编译异常，又称受检异常，指编译会检查），所以非运行时异常比较严重，编译就不会通过生成不了字节码文件，即当你写代码时就报的异常就是编译时异常。
+
+编译时异常有`IOException、ClssNotFoudException`等，运行时异常有`NullPointerException、ArrayIndexOutofBoundsException`等
+
+### 5.3 异常处理方式
+
+一般的程序可能会有很多的异常，如果每个用if-else规避这些异常就很繁琐冗余，java就给出了异常处理机制，即把可能出现异常得代码分成段，用{}包裹，不会出现异常的代码就不用处理。
+
+抓抛模型：
+
+* 过程一："抛"
+
+程序执行时会在对应的异常代码中生成一个异常类的对象，并将对象抛出，一旦对象抛出后，后面的代码不会执行
+
+* 过程二："抓"
+
+抓住抛出的对象：①try-catch-finally ②throws
+
+#### 5.3.1 try-catch-finally
+
+> 引用狼来了故事，比如狼来了要吃羊，牧羊人自己能够搞定则try-catch，一般是编写者知道具体的异常
+
+```java
+try {
+            testException1.testEx();//可能出现的异常
+        } catch (Exception e) {//捕获的异常，类型要匹配
+            e.printStackTrace();//打印异常堆栈信息  异常处理完，后面的代码才会执行
+        }finally{//一定执行的代码
+}
+```
+
+使用try-catch处理编译时异常时，在编译时不会报错，但在运行时依旧会报错。运行时异常即使try-catch之后依旧会爆红，还是会修改代码，编译时也看不出，所以对弈编译时异常一定要考虑异常处理。
+
++ finally（一定会被执行的）
+  即使catch中出现异常或有return，try中有return，finally一定在return前执行一次；
+  像数据库连接、输入输出流和socket需要手动的资源释放（释放是因为有cpu资源占用或泄漏风险），一般在finally中声明
+
+#### 5.3.2 throws+异常类型
+
+狼来了要吃羊，但此时狼比较狡猾，则把狼往山下抛给村里其他人解决。异常搞不定，把异常往上抛throws，因为是类继承，一直往上抛，如果还是处理不了，就会挂掉。
+
+向上抛，交给上层处理，并没有解决掉，只有try-catch会处理掉
+
+为什么要向上抛出，抛出就行吗
+
+throw  和   throws
+
+try catch finally
+
+try catch finally  使用场景
+全局异常处理  有哪些异常处理类
+
+异常抛出后  程序还能执行吗
+
+## 6 序列化与反序列化
+
+为什么需要序列化
+
+继承类  可以继承序列化
