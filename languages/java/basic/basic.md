@@ -385,3 +385,30 @@ try catch finally  使用场景
 为什么需要序列化
 
 继承类  可以继承序列化
+
+
+什么是default方法？https://zhuanlan.zhihu.com/p/33411641#:~:text=%E5%A6%82%E6%9E%9C%E4%B8%80%E4%B8%AA%E6%96%B9%E6%B3%95%E5%9C%A8%E5%A4%9A%E4%B8%AA%E6%8E%A5%E5%8F%A3%E4%B8%AD%E9%83%BD%E6%9C%89%E5%A3%B0%E6%98%8E%EF%BC%8C%E9%82%A3%E4%B9%88%EF%BC%8C%E4%BB%BB%E4%BD%95%E4%B8%80%E4%B8%AA,default%20%E5%AE%9E%E7%8E%B0%E9%83%BD%E4%B8%8D%E4%BC%9A%E8%A2%AB%E7%BB%A7%E6%89%BF%EF%BC%8C%E4%BD%A0%E5%B0%86%E4%BC%9A%E5%BE%97%E5%88%B0%E4%B8%80%E4%B8%AA%E7%BC%96%E8%AF%91%E6%97%B6%E9%94%99%E8%AF%AF%E3%80%82
+
+public default 的权限访问  为什么不一致
+接口的
+public interface Base{
+Result<Integer> save(Entity var1);
+}
+
+这个会被继承吗
+
+
+类或接口如果不写public、private、default等访问权限  那么是默认什么权限?
+
+
+匿名内部类https://blog.csdn.net/qq_34944851/article/details/51449420
+
+内部类就是innerclass
+https://www.cnblogs.com/wuhenzhidu/p/anonymous.html
+
+
+
+那些是类或接口必须继承的方法
+那些是类必须是实现的方法
+接口也可以实现方法，然后类是否能够重新实现方法
+
