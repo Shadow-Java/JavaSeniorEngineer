@@ -2,7 +2,7 @@
 
 java数据分为两种：基本数据类型（Primitive Type）和引用数据类型（Reference Type）
 
-![basicdatatype.png](./assets/basic-data-type.png)
+![](https://picturestr.oss-cn-shanghai.aliyuncs.com/javaseniorengineer/language/java/basic/202204291555779.png)
 
 ### 1.1 基本数据类型
 
@@ -411,4 +411,12 @@ https://www.cnblogs.com/wuhenzhidu/p/anonymous.html
 那些是类或接口必须继承的方法
 那些是类必须是实现的方法
 接口也可以实现方法，然后类是否能够重新实现方法
+
+位运算的使用场景
+https://blog.csdn.net/qq_39314099/article/details/110482069
+
+
+import 导入机制
+
+jar是怎么命名的
 
