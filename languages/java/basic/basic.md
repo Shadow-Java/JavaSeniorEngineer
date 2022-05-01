@@ -354,14 +354,26 @@ try {
         } catch (Exception e) {//捕获的异常，类型要匹配
             e.printStackTrace();//打印异常堆栈信息  异常处理完，后面的代码才会执行
         }finally{//一定执行的代码
-}
+    }
 ```
 
-使用try-catch处理编译时异常时，在编译时不会报错，但在运行时依旧会报错。运行时异常即使try-catch之后依旧会爆红，还是会修改代码，编译时也看不出，所以对弈编译时异常一定要考虑异常处理。
+使用try-catch处理编译时异常时，在编译时不会报错，但在运行时依旧会报错，比如捕捉io异常。运行时异常即使try-catch之后依旧会爆红，还是会修改代码，编译时也看不出，所以对弈编译时异常一定要考虑异常处理，比如空指针异常。
 
 + finally（一定会被执行的）
-  即使catch中出现异常或有return，try中有return，finally一定在return前执行一次；
-  像数据库连接、输入输出流和socket需要手动的资源释放（释放是因为有cpu资源占用或泄漏风险），一般在finally中声明
+
+```java
+  try {
+              testException1.testEx();//可能出现的异常
+              return;
+          } catch (Exception e) {//捕获的异常，类型要匹配
+              e.printStackTrace();//打印异常堆栈信息  异常处理完，后面的代码才会执行
+              return;
+          }finally{//在return之前一定执行的代码
+      }
+```
+
+即使catch中出现异常或有return，try中有return，finally一定在return前执行一次；
+像`数据库连接`、`输入输出流`和`socket`需要手动的资源释放（释放是因为有cpu资源占用或泄漏风险），一般在finally中声明
 
 #### 5.3.2 throws+异常类型
 
@@ -369,25 +381,29 @@ try {
 
 向上抛，交给上层处理，并没有解决掉，只有try-catch会处理掉
 
-为什么要向上抛出，抛出就行吗
-
-throw  和   throws
-
-try catch finally
-
-try catch finally  使用场景
-全局异常处理  有哪些异常处理类
-
-异常抛出后  程序还能执行吗
+* throw
+  表明在方法内抛出某种异常
+  执行throw语句时后面的语句不再执行
 
 ## 6 序列化与反序列化
 
-为什么需要序列化
+### 6.1 为什么需要序列化
+
+当JavaBean需要在`网络上传输`或`存储`（比如持久化到磁盘）时就会用序列化，是将对象转换成字节流文件（io）就是序列化，反序列化是将流文件还原成对象。
+
+### 6.2 序列化方式
+
+* 实现Serializable 接口
+* 实现Externalizable 接口
+
+
+[(2 封私信 / 2 条消息) Java序列化有什么作用？序列化与不序列化有什么区别？ - 知乎 (zhihu.com)](https://www.zhihu.com/question/26475281)
 
 继承类  可以继承序列化
 
+什么是default方法？
 
-什么是default方法？https://zhuanlan.zhihu.com/p/33411641#:~:text=%E5%A6%82%E6%9E%9C%E4%B8%80%E4%B8%AA%E6%96%B9%E6%B3%95%E5%9C%A8%E5%A4%9A%E4%B8%AA%E6%8E%A5%E5%8F%A3%E4%B8%AD%E9%83%BD%E6%9C%89%E5%A3%B0%E6%98%8E%EF%BC%8C%E9%82%A3%E4%B9%88%EF%BC%8C%E4%BB%BB%E4%BD%95%E4%B8%80%E4%B8%AA,default%20%E5%AE%9E%E7%8E%B0%E9%83%BD%E4%B8%8D%E4%BC%9A%E8%A2%AB%E7%BB%A7%E6%89%BF%EF%BC%8C%E4%BD%A0%E5%B0%86%E4%BC%9A%E5%BE%97%E5%88%B0%E4%B8%80%E4%B8%AA%E7%BC%96%E8%AF%91%E6%97%B6%E9%94%99%E8%AF%AF%E3%80%82
+https://zhuanlan.zhihu.com/p/33411641#:~:text=%E5%A6%82%E6%9E%9C%E4%B8%80%E4%B8%AA%E6%96%B9%E6%B3%95%E5%9C%A8%E5%A4%9A%E4%B8%AA%E6%8E%A5%E5%8F%A3%E4%B8%AD%E9%83%BD%E6%9C%89%E5%A3%B0%E6%98%8E%EF%BC%8C%E9%82%A3%E4%B9%88%EF%BC%8C%E4%BB%BB%E4%BD%95%E4%B8%80%E4%B8%AA,default%20%E5%AE%9E%E7%8E%B0%E9%83%BD%E4%B8%8D%E4%BC%9A%E8%A2%AB%E7%BB%A7%E6%89%BF%EF%BC%8C%E4%BD%A0%E5%B0%86%E4%BC%9A%E5%BE%97%E5%88%B0%E4%B8%80%E4%B8%AA%E7%BC%96%E8%AF%91%E6%97%B6%E9%94%99%E8%AF%AF%E3%80%82
 
 public default 的权限访问  为什么不一致
 接口的
@@ -397,16 +413,12 @@ Result<Integer> save(Entity var1);
 
 这个会被继承吗
 
-
 类或接口如果不写public、private、default等访问权限  那么是默认什么权限?
-
 
 匿名内部类https://blog.csdn.net/qq_34944851/article/details/51449420
 
 内部类就是innerclass
 https://www.cnblogs.com/wuhenzhidu/p/anonymous.html
-
-
 
 那些是类或接口必须继承的方法
 那些是类必须是实现的方法
@@ -415,8 +427,15 @@ https://www.cnblogs.com/wuhenzhidu/p/anonymous.html
 位运算的使用场景
 https://blog.csdn.net/qq_39314099/article/details/110482069
 
-
 import 导入机制
+
+[Java import的机制_chentong_zhanran的博客-CSDN博客](https://blog.csdn.net/chentong_zhanran/article/details/7270847)
+
 
 jar是怎么命名的
 
+不同的module引入类需要导入依赖吗
+
+[(2 封私信 / 2 条消息) JavaGuide - 知乎 (zhihu.com)](https://www.zhihu.com/people/javaguide)
+
+> 学习方式：b站与百度

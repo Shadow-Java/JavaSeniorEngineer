@@ -45,3 +45,5 @@ public interface MyInterfaceAbstract {
 
 https://blog.csdn.net/qq_44750696/article/details/123703495
 
+
+多态是怎么做的？
