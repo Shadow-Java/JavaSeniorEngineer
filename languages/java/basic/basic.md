@@ -396,7 +396,6 @@ try {
 * 实现Serializable 接口
 * 实现Externalizable 接口
 
-
 [(2 封私信 / 2 条消息) Java序列化有什么作用？序列化与不序列化有什么区别？ - 知乎 (zhihu.com)](https://www.zhihu.com/question/26475281)
 
 继承类  可以继承序列化
@@ -430,7 +429,6 @@ https://blog.csdn.net/qq_39314099/article/details/110482069
 import 导入机制
 
 [Java import的机制_chentong_zhanran的博客-CSDN博客](https://blog.csdn.net/chentong_zhanran/article/details/7270847)
-
 
 jar是怎么命名的
 
