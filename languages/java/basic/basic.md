@@ -436,4 +436,7 @@ jar是怎么命名的
 
 [(2 封私信 / 2 条消息) JavaGuide - 知乎 (zhihu.com)](https://www.zhihu.com/people/javaguide)
 
-> 学习方式：b站与百度
+## 多态是怎样设计的
+
+这些文章简直是企业级理解
+https://blog.csdn.net/v_july_v/article/details/6543438
