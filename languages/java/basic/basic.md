@@ -2,7 +2,7 @@
 
 java数据分为两种：基本数据类型（Primitive Type）和引用数据类型（Reference Type）
 
-![](https://picturestr.oss-cn-shanghai.aliyuncs.com/javaseniorengineer/language/java/basic/202204291555779.png)
+![](https://picturestr.oss-cn-shanghai.aliyuncs.com/javaseniorengineer/language/java/basic/202205110048076.png)
 
 ### 1.1 基本数据类型
 
@@ -398,7 +398,7 @@ try {
 
 [(2 封私信 / 2 条消息) Java序列化有什么作用？序列化与不序列化有什么区别？ - 知乎 (zhihu.com)](https://www.zhihu.com/question/26475281)
 
-继承类  可以继承序列化
+> 继承类  可以继承父类的序列化
 
 什么是default方法？
 
@@ -440,3 +440,8 @@ jar是怎么命名的
 
 这些文章简直是企业级理解
 https://blog.csdn.net/v_july_v/article/details/6543438
+
+静态分派，动态分派，invoke指令，虚表
+
+海量数据处理
+https://blog.csdn.net/v_JULY_v/article/details/7382693

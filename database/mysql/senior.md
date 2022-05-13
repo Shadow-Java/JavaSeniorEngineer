@@ -109,3 +109,12 @@ mysql临时表
 flink kafka
 
 
+数据库优化：
+索引优化、sql语句优化，存储引擎的参数配置优化，索引缓冲区 查询缓冲区 数据缓冲区 读写缓冲区  日志缓冲区的大小配置
+操作系统关于连接的参数配置timewait的时长 socket链接的快速回收、reuse
+backlog的队列大小
+数据库引擎性能瓶颈在磁盘io这块，mysql这块就是redo logo，undo logo保持数据库事务的持久性 原子性
+binlog关掉减少一次刷盘，redo logo来做主从物理日志  性能也比较好，但需要减少redo logo刷盘的性能抖动 ，redo logo日志去文件增长
+spdk的高性能磁盘io框架，技术主要用的是uio polling，减少中断 可以用在消息队列  rocks db也用spdk优化
+
+
