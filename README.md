@@ -23,7 +23,7 @@
 * [ ]  12.算法
 * [ ]  13.书籍（系统设计、linux内核、系统调优等）
 
-# 1Languages
+# 1、Languages
 
 ## 1.1 Java
 
@@ -57,7 +57,7 @@
 
 ## 1.3 算法
 
-# 2数据库
+# 2、数据库
 
 ## 2.1 mysql
 
@@ -67,43 +67,32 @@
 
 [MySQL进阶技术](https://github.com/liyuanbo1997/JavaSeniorEngineer/blob/master/数据库技术/MySQL进阶技术.md)
 
-# 3四大发明
-
-## 3.1 数据结构
-
-## 3.2 操作系统
-
-## 3.3 计算机网络
-
-## 3.4 计算机组成原理
-
 # 3 四大发明总览
 
+## 3.1 数据结构
 [数据结构(西安电子科技大学)](https://github.com/liyuanbo1997/JavaSeniorEngineer/blob/master/四大发明总览/JDK的数据结构.md)
-
+## 3.2 操作系统
 [操作系统](https://github.com/liyuanbo1997/JavaSeniorEngineer/blob/master/四大发明总览/操作系统.md)
-
+## 3.3 计算机网络
+[计算机网络](https://github.com/liyuanbo1997/JavaSeniorEngineer/blob/master/四大发明总览/计算机网络.md)
+## 3.4 计算机组成原理
 [计算机组成原理（西安电子科技大学）](https://github.com/liyuanbo1997/JavaSeniorEngineer/blob/master/四大发明总览/计算机组成原理.md)
 
-[计算机网络](https://github.com/liyuanbo1997/JavaSeniorEngineer/blob/master/四大发明总览/计算机网络.md)
 
-# 4面试经验与技巧
+# 4、面试经验与技巧
 
 [常见的面试笔记](https://github.com/liyuanbo1997/JavaSeniorEngineer/blob/master/面试经验和问题总结/常见的面试笔记.md)
 
-# 5项目
+# 5、项目
 
-# 6网站推荐
+# 6、网站推荐
 
-# 7工作场景问题
+# 7、工作场景问题
 
 [每日一题](https://github.com/liyuanbo1997/JavaSeniorEngineer/blob/master/面试经验和问题总结/每日一题.md)
 
-## 相关书籍
 
-[相关书籍连接下载](https://github.com/liyuanbo1997/JavaSeniorEngineer/blob/master/相关书籍连接下载.md)
-
-# 8 待办事项
+# 8、待办事项
 
 https://developer.aliyun.com/article/792619 怎么去搭建一个秒杀系统
 
@@ -112,6 +101,10 @@ https://www.cnblogs.com/trunks2008/p/15565671.html java agent
 压测分流使用agent好 还是用aop
 https://www.jianshu.com/p/63c328ca208d
 
-# 9 参考文献
+# 9、参考文献
 
-算法4
+## 相关书籍
+
+[相关书籍连接下载](https://github.com/liyuanbo1997/JavaSeniorEngineer/blob/master/相关书籍连接下载.md)
+
+
