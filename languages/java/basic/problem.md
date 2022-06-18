@@ -47,3 +47,10 @@ https://blog.csdn.net/qq_44750696/article/details/123703495
 
 
 多态是怎么做的？
+
+Java 反射
+1.为什么要用反射
+因为反射能够强制将class对象加载进内存，返回class对象；但一般是我们api用到这个对象才会实例化，需要提前使用对象的话就得反射拿到class对象，可以将bean
+注入spring中帮忙管理
+Java反射的使用
+https://blog.csdn.net/m0_69992031/article/details/125269217
