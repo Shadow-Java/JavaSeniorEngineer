@@ -9,3 +9,5 @@ nas
 
 
 # 爱数、浪擎、英方、鼎甲、壹进制等国产备份软件厂商选型
+
+SDN（software defined network）软件定义网络：https://blog.csdn.net/AtlanSI/article/details/95613225
