@@ -119,9 +119,8 @@ Spring 框架支持以下五种 bean 的作用域：
 * session：在一个HTTP Session 中，一个 bean 定义对应一个实例。该作用域仅在基于 web 的Spring ApplicationContext 情形下有效
 * global-session：在一个全局的 HTTP Session 中，一个 bean 定义对应一个实例。该作用域仅在基于 web 的Spring ApplicationContext 情形下有效。缺省的 Spring bean 的作用域是 Singleton.
 ## Spring 框架中的单例 bean 是线程安全的吗?
-不，Spring 框架中的单例 bean 不是线程安全的。
- 在Spring框架中，默认情况下，单例（Singleton）作用域的Bean是共享的，即在整个应用程序中只有一个实例。然而，这并不意味着Spring的单例bean自动成为线程安全的。
- Spring的单例bean在多线程环境下可能会导致线程安全问题的主要原因是其状态（state）。如果单例bean维护了可变的状态，并且多个线程同时修改这个状态，就会产生竞态条件（race condition）和数据不一致的问题。
+不，Spring 框架中的单例 bean 不是线程安全的。在Spring框架中，默认情况下，单例（Singleton）作用域的Bean是共享的，即在整个应用程序中只有一个实例。然而，这并不意味着Spring的单例bean自动成为线程安全的。
+Spring的单例bean在多线程环境下可能会导致线程安全问题的主要原因是其状态（state）。如果单例bean维护了可变的状态，并且多个线程同时修改这个状态，就会产生竞态条件（race condition）和数据不一致的问题。
 以下是一些可能导致单例bean线程不安全的情况：
 * 共享可变状态：如果单例bean中包含可变的实例变量，并且多个线程同时修改这些变量，就可能导致数据不一致和竞态条件。例如，在单例bean中使用实例变量来存储某个计数器，并且多个线程同时调用增加计数的方法。
 
@@ -146,223 +145,130 @@ Spring 框架支持以下五种 bean 的作用域：
 The bean 标签有两个重要的属性（init-method 和destroy-method）。用它们你可以自己定制初始化和注销方法。它们也有相应的注解（@PostConstruct 和@PreDestroy）。
 ## 什么是 Spring 的内部 bean？
 当一个 bean 仅被用作另一个 bean 的属性时，它能被声明为一个内部 bean，为了定义 inner bean，在Spring的基于XML的配置元数据中，可以在<property/>或<constructor-arg/> 元素内使用<bean/> 元素，内部 bean 通常是匿名的，它们的 Scope 一般是prototype。
-30. 在 Spring 中如何注入一个 java 集合？
-    Spring 提供以下几种集合的配置元素：
-     <list>类型用于注入一列值，允许有相同的值。
-     <set> 类型用于注入一组值，不允许有相同的值。
-     <map> 类型用于注入一组键值对，键和值都可以为任
-    意类型。
-     <props>类型用于注入一组键值对，键和值都只能为
-    String 类型。
-31. 什么是 bean 装配?
-    装配，或 bean 装配是指在 Spring 容器中把 bean 组装
-    到一起，前提是容器需要知道 bean 的依赖关系，如何
-    通过依赖注入来把它们装配到一起。
-32. 什么是 bean 的自动装配？
-    Spring 容器能够自动装配相互合作的 bean，这意味着
-    容器不需要<constructor-arg>和<property>配置，能
-    通过 Bean 工厂自动处理 bean 之间的协作。
-33. 解释不同方式的自动装配 。
-    有五种自动装配的方式，可以用来指导 Spring 容器用自
-    动装配方式来进行依赖注入。
-     no：默认的方式是不进行自动装配，通过显式设置 ref
-    属性来进行装配。
-     byName：通过参数名 自动装配，Spring 容器在配置
-    文件中发现 bean 的 autowire 属性被设置成 byname，
-    之后容器试图匹配、装配和该 bean 的属性具有相同名
-    字的 bean。
-     byType:：通过参数类型自动装配，Spring 容器在配置
-    文件中发现 bean 的 autowire 属性被设置成 byType，
-    之后容器试图匹配、装配和该 bean 的属性具有相同类
-    型的 bean。如果有多个 bean 符合条件，则抛出错误。
-     constructor：这个方式类似于 byType， 但是要提供
-    给构造器参数，如果没有确定的带参数的构造器参数类
-    型，将会抛出异常。
-     autodetect：首先尝试使用 constructor 来自动装配，
-    如果无法工作，则使用 byType 方式。
-    34.自动装配有哪些局限性 ?
-    自动装配的局限性是：
-     重写： 你仍需用 <constructor-arg>和 <property>
-    配置来定义依赖，意味着总要重写自动装配。
-     基本数据类型：你不能自动装配简单的属性，如基本数
-    据类型，String 字符串，和类。
-     模糊特性：自动装配不如显式装配精确，如果有可能，
-    建议使用显式装配。
-35. 你可以在 Spring 中注入一个 null 和一个空字符串
-    吗？
-    可以。
-    Spring 注解
-36. 什么是基于 Java 的 Spring 注解配置? 给一些注解
-    的例子.
-    基于 Java 的配置，允许你在少量的 Java 注解的帮助
-    下，进行你的大部分 Spring 配置而非通过 XML 文件。
-    以@Configuration 注解为例，它用来标记类可以当做
-    一个 bean 的定义，被 Spring IOC 容器使用。另一个例
-    子是@Bean 注解，它表示此方法将要返回一个对象，作
-    为一个 bean 注册进 Spring 应用上下文。
-37. 什么是基于注解的容器配置?
-    相对于 XML 文件，注解型的配置依赖于通过字节码元数
-    据装配组件，而非尖括号的声明。
-    开发者通过在相应的类，方法或属性上使用注解的方
-    式，直接组件类中进行配置，而不是使用 xml 表述
-    bean 的装配关系。
-38. 怎样开启注解装配？
-    注解装配在默认情况下是不开启的，为了使用注解装
-    配，我们必须在 Spring 配置文件中配置
-    <context:annotation-config/>元素。
-39. @Required 注解
-    这个注解表明 bean 的属性必须在配置的时候设置，通
-    过一个 bean 定义的显式的属性值或通过自动装配，若
-    @Required 注解的 bean 属性未被设置，容器将抛出
-    BeanInitializationException。
-40. @Autowired 注解
-    @Autowired 注解提供了更细粒度的控制，包括在何处
-    以及如何完成自动装配。它的用法和@Required 一样，
-    修饰 setter 方法、构造器、属性或者具有任意名称和/或
-    多个参数的 PN 方法。
-41. @Qualifier 注解
-    当有多个相同类型的 bean 却只有一个需要自动装配
-    时，将@Qualifier 注解和@Autowire 注解结合使用以
-    消除这种混淆，指定需要装配的确切的 bean。
-    Spring 数据访问
-    42.在 Spring 框架中如何更有效地使用 JDBC?
-    使用 SpringJDBC 框架，资源管理和错误处理的代价都
-    会被减轻。所以开发者只需写 statements 和 queries
-    从数据存取数据，JDBC 也可以在 Spring 框架提供的模
-    板类的帮助下更有效地被使用，这个模板叫
-    JdbcTemplate （例子见这里 here）
-43. JdbcTemplate
-    JdbcTemplate 类提供了很多便利的方法解决诸如把数
-    据库数据转变成基本数据类型或对象，执行写好的或可
-    调用的数据库操作语句，提供自定义的数据错误处理。
-44. Spring 对 DAO 的支持
-    Spring 对数据访问对象（DAO）的支持旨在简化它和数
-    据访问技术如 JDBC，Hibernate or JDO 结合使用。这
-    使我们可以方便切换持久层。编码时也不用担心会捕获
-    每种技术特有的异常。
-45. 使用 Spring 通过什么方式访问 Hibernate?
-    在 Spring 中有两种方式访问 Hibernate：
-     控制反转 Hibernate Template 和 Callback。
-     继承 HibernateDAOSupport 提供一个 AOP 拦截器。
-46. Spring 支持的 ORM
-    Spring 支持以下 ORM：
-     Hibernate
-     iBatis
-     JPA (Java Persistence API)
-     TopLink
-     JDO (Java Data Objects)
-     OJB
-    47.如何通过 HibernateDaoSupport 将 Spring 和
-    Hibernate 结合起来？
-    用 Spring 的 SessionFactory 调用
-    LocalSessionFactory。集成过程分三步：
-     配置 the Hibernate SessionFactory。
-     继承 HibernateDaoSupport 实现一个 DAO。
-     在 AOP 支持的事务中装配。
-48. Spring 支持的事务管理类型
-    Spring 支持两种类型的事务管理：
-     编程式事务管理：这意味你通过编程的方式管理事务，
-    给你带来极大的灵活性，但是难维护。
-     声明式事务管理：这意味着你可以将业务代码和事务管
-    理分离，你只需用注解和 XML 配置来管理事务。
-49. Spring 框架的事务管理有哪些优点？
-     它为不同的事务 API 如 JTA，JDBC，Hibernate，JPA
-    和 JDO，提供一个不变的编程模式。
-     它为编程式事务管理提供了一套简单的 API 而不是一些
-    复杂的事务 API 如
-     它支持声明式事务管理。
-     它和 Spring 各种数据访问抽象层很好得集成。
-50. 你更倾向用那种事务管理类型？
-    大多数 Spring 框架的用户选择声明式事务管理，因为它
-    对应用代码的影响最小，因此更符合一个无侵入的轻量
-    级容器的思想。声明式事务管理要优于编程式事务管
-    理，虽然比编程式事务管理（这种方式允许你通过代码
-    控制事务）少了一点灵活性。
-    Spring 面向切面编程（AOP）
-51. 解释 AOP
-    面向切面的编程，或 AOP， 是一种编程技术，允许程序
-    模块化横向切割关注点，或横切典型的责任划分，如日
-    志和事务管理。
-52. Aspect 切面
-    AOP 核心就是切面，它将多个类的通用行为封装成可重
-    用的模块，该模块含有一组 API 提供横切功能。比如，
-    一个日志模块可以被称作日志的 AOP 切面。根据需求的
-    不同，一个应用程序可以有若干切面。在 Spring AOP
-    中，切面通过带有@Aspect 注解的类实现。
-52. 在 Spring AOP 中，关注点和横切关注的区别是什
-    么？
-    关注点是应用中一个模块的行为，一个关注点可能会被
-    定义成一个我们想实现的一个功能。
-    横切关注点是一个关注点，此关注点是整个应用都会使
-    用的功能，并影响整个应用，比如日志，安全和数据传
-    输，几乎应用的每个模块都需要的功能。因此这些都属
-    于横切关注点。
-54. 连接点
-    连接点代表一个应用程序的某个位置，在这个位置我们
-    可以插入一个 AOP 切面，它实际上是个应用程序执行
-    Spring AOP 的位置。
-55. 通知
-    通知是个在方法执行前或执行后要做的动作，实际上是
-    程序执行时要通过 SpringAOP 框架触发的代码段。
-    Spring 切面可以应用五种类型的通知：
-     before：前置通知，在一个方法执行前被调用。
-     after: 在方法执行之后调用的通知，无论方法执行是否
-    成功。
-     after-returning: 仅当方法成功完成后执行的通知。
-     after-throwing: 在方法抛出异常退出时执行的通知。
-     around: 在方法执行之前和之后调用的通知。
-56. 切点
-    切入点是一个或一组连接点，通知将在这些位置执行。
-    可以通过表达式或匹配的方式指明切入点。
-57. 什么是引入?
-    引入允许我们在已存在的类中增加新的方法和属性。
-58. 什么是目标对象?
-    被一个或者多个切面所通知的对象。它通常是一个代理
-    对象。也指被通知（advised）对象。
-59. 什么是代理?
-    代理是通知目标对象后创建的对象。从客户端的角度
-    看，代理对象和目标对象是一样的。
-60. 有几种不同类型的自动代理？
-    BeanNameAutoProxyCreator
-    DefaultAdvisorAutoProxyCreator
-    Metadata autoproxying
-61. 什么是织入。什么是织入应用的不同点？
-    织入是将切面和到其他应用类型或对象连接或创建一个
-    被通知对象的过程。
-    织入可以在编译时，加载时，或运行时完成。
-62. 解释基于 XML Schema 方式的切面实现。
-    在这种情况下，切面由常规类以及基于 XML 的配置实
-    现。
-63. 解释基于注解的切面实现
-    在这种情况下(基于@AspectJ 的实现)，涉及到的切面声
-    明的风格与带有 java5 标注的普通 java 类一致。
-    Spring 的 MVC
-64. 什么是 Spring 的 MVC 框架？
-    Spring 配备构建 Web 应用的全功能 MVC 框架。
-    Spring 可以很便捷地和其他 MVC 框架集成，如
-    Struts，Spring 的 MVC 框架用控制反转把业务对象和
-    控制逻辑清晰地隔离。它也允许以声明的方式把请求参
-    数和业务对象绑定。
-65. DispatcherServlet
-    Spring 的 MVC 框架是围绕 DispatcherServlet 来设计
-    的，它用来处理所有的 HTTP 请求和响应。
-66. WebApplicationContext
-    WebApplicationContext 继承了 ApplicationContext
-    并增加了一些 WEB 应用必备的特有功能，它不同于一
-    般的 ApplicationContext ，因为它能处理主题，并找
-    到被关联的 servlet。
-67. 什么是 Spring MVC 框架的控制器？
-    控制器提供一个访问应用程序的行为，此行为通常通过
-    服务接口实现。控制器解析用户输入并将其转换为一个
-    由视图呈现给用户的模型。Spring 用一个非常抽象的方
-    式实现了一个控制层，允许用户创建多种用途的控制
-    器。
-68. @Controller 注解
-    该注解表明该类扮演控制器的角色，Spring 不需要你继
-    承任何其他控制器基类或引用 Servlet API。
-69. @RequestMapping 注解
-    该注解是用来映射一个 URL 到一个类或一个特定的方处
-    理法上。
+## 在 Spring 中如何注入一个 java 集合？
+Spring 提供以下几种集合的配置元素：
+* <list>类型用于注入一列值，允许有相同的值。
+* <set> 类型用于注入一组值，不允许有相同的值。
+* <map> 类型用于注入一组键值对，键和值都可以为任意类型。
+* <props>类型用于注入一组键值对，键和值都只能为String 类型。 
+## 什么是 bean 装配?
+装配,或bean装配是指在 Spring 容器中把 bean 组装到一起，前提是容器需要知道 bean 的依赖关系，如何通过依赖注入来把它们装配到一起。
+## 什么是 bean 的自动装配？
+Spring 容器能够自动装配相互合作的 bean，这意味着容器不需要<constructor-arg>和<property>配置，能通过 Bean 工厂自动处理 bean 之间的协作。
+## 解释不同方式的自动装配 。
+有五种自动装配的方式，可以用来指导 Spring 容器用自动装配方式来进行依赖注入。
+* no：默认的方式是不进行自动装配，通过显式设置 ref属性来进行装配。
+* byName：通过参数名 自动装配，Spring 容器在配置文件中发现 bean 的 autowire 属性被设置成 byname，之后容器试图匹配、装配和该 bean 的属性具有相同名字的 bean。
+* byType:：通过参数类型自动装配，Spring 容器在配置文件中发现 bean 的 autowire 属性被设置成 byType，之后容器试图匹配、装配和该 bean 的属性具有相同类型的 bean。如果有多个bean符合条件，则抛出错误。
+* constructor：这个方式类似于 byType， 但是要提供给构造器参数，如果没有确定的带参数的构造器参数类型，将会抛出异常。
+* autodetect：首先尝试使用 constructor 来自动装配，如果无法工作，则使用 byType 方式。
+    
+## 自动装配有哪些局限性 ?
+自动装配的局限性是：
+* 重写： 你仍需用 <constructor-arg>和 <property>配置来定义依赖，意味着总要重写自动装配。
+* 基本数据类型：你不能自动装配简单的属性，如基本数据类型，String 字符串，和类。
+* 模糊特性：自动装配不如显式装配精确，如果有可能，建议使用显式装配。
+## 你可以在 Spring 中注入一个 null 和一个空字符串吗？
+可以。 Spring 注解
+## 什么是基于 Java 的 Spring 注解配置? 给一些注解的例子.
+基于 Java 的配置，允许你在少量的 Java 注解的帮助下，进行你的大部分 Spring 配置而非通过 XML 文件。
+以@Configuration 注解为例，它用来标记类可以当做一个 bean 的定义，被Spring IOC容器使用。另一个例子是@Bean 注解，它表示此方法将要返回一个对象，作为一个bean注册进Spring应用上下文。
+## 什么是基于注解的容器配置?
+相对于 XML 文件，注解型的配置依赖于通过字节码元数据装配组件，而非尖括号的声明。开发者通过在相应的类，方法或属性上使用注解的方式，直接组件类中进行配置，而不是使用 xml 表述bean 的装配关系。
+## 怎样开启注解装配？
+注解装配在默认情况下是不开启的，为了使用注解装配，我们必须在 Spring 配置文件中配置<context:annotation-config/>元素。
+## @Required 注解
+这个注解表明 bean 的属性必须在配置的时候设置，通过一个bean定义的显式的属性值或通过自动装配，若@Required注解的bean属性未被设置，容器将抛出BeanInitializationException。
+## @Autowired 注解
+@Autowired 注解提供了更细粒度的控制，包括在何处以及如何完成自动装配。它的用法和@Required 一样，修饰 setter 方法、构造器、属性或者具有任意名称和/或多个参数的 PN 方法。
+## @Qualifier 注解
+当有多个相同类型的 bean 却只有一个需要自动装配时，将@Qualifier 注解和@Autowire 注解结合使用以消除这种混淆，指定需要装配的确切的 bean。Spring 数据访问
+
+## 在 Spring 框架中如何更有效地使用 JDBC?
+使用 SpringJDBC 框架，资源管理和错误处理的代价都会被减轻。所以开发者只需写 statements 和 queries从数据存取数据，JDBC 也可以在 Spring 框架提供的模板类的帮助下更有效地被使用，这个模板叫JdbcTemplate （例子见这里 here）
+## JdbcTemplate
+JdbcTemplate 类提供了很多便利的方法解决诸如把数据库数据转变成基本数据类型或对象，执行写好的或可调用的数据库操作语句，提供自定义的数据错误处理。
+## Spring 对 DAO 的支持
+Spring 对数据访问对象（DAO）的支持旨在简化它和数据访问技术如 JDBC，Hibernate or JDO 结合使用。这使我们可以方便切换持久层。编码时也不用担心会捕获每种技术特有的异常。
+## 使用 Spring 通过什么方式访问 Hibernate?
+在 Spring 中有两种方式访问 Hibernate：
+* 控制反转 Hibernate Template 和 Callback。
+* 继承 HibernateDAOSupport 提供一个 AOP 拦截器。
+## Spring 支持的 ORM
+Spring 支持以下 ORM：
+- Hibernate
+- iBatis
+- JPA (Java Persistence API)
+- TopLink
+- JDO (Java Data Objects)
+- OJB
+## 如何通过 HibernateDaoSupport 将 Spring 和Hibernate 结合起来？
+用 Spring 的 SessionFactory 调用LocalSessionFactory。集成过程分三步：
+- 配置 the Hibernate SessionFactory。
+- 继承 HibernateDaoSupport 实现一个 DAO。
+- 在 AOP 支持的事务中装配。
+## Spring 支持的事务管理类型
+Spring 支持两种类型的事务管理：
+- 编程式事务管理：这意味你通过编程的方式管理事务，给你带来极大的灵活性，但是难维护。
+- 声明式事务管理：这意味着你可以将业务代码和事务管理分离，你只需用注解和 XML 配置来管理事务。
+## Spring 框架的事务管理有哪些优点？
+- 它为不同的事务 API 如 JTA，JDBC，Hibernate，JPA和 JDO，提供一个不变的编程模式。
+- 它为编程式事务管理提供了一套简单的 API 而不是一些复杂的事务 API 如
+- 它支持声明式事务管理。
+- 它和 Spring 各种数据访问抽象层很好得集成。
+## 你更倾向用那种事务管理类型？
+大多数 Spring 框架的用户选择声明式事务管理，因为它对应用代码的影响最小，因此更符合一个无侵入的轻量级容器的思想。声明式事务管理要优于编程式事务管理，虽然比编程式事务管理（这种方式允许你通过代码控制事务）少了一点灵活性。
+
+# Spring 面向切面编程（AOP）
+## 解释 AOP
+面向切面的编程，或 AOP， 是一种编程技术，允许程序模块化横向切割关注点，或横切典型的责任划分，如日志和事务管理。
+## Aspect 切面
+AOP 核心就是切面，它将多个类的通用行为封装成可重用的模块，该模块含有一组 API 提供横切功能。比如，一个日志模块可以被称作日志的 AOP 切面。根据需求的不同，一个应用程序可以有若干切面。在 Spring AOP中，切面通过带有@Aspect 注解的类实现。
+## 在 Spring AOP 中，关注点和横切关注的区别是什么？
+关注点是应用中一个模块的行为，一个关注点可能会被定义成一个我们想实现的一个功能。横切关注点是一个关注点，此关注点是整个应用都会使用的功能，并影响整个应用，比如日志，安全和数据传输，几乎应用的每个模块都需要的功能。因此这些都属于横切关注点。
+## 连接点
+连接点代表一个应用程序的某个位置，在这个位置我们可以插入一个 AOP 切面，它实际上是个应用程序执行Spring AOP 的位置。
+## 通知
+通知是个在方法执行前或执行后要做的动作，实际上是程序执行时要通过 SpringAOP 框架触发的代码段。
+Spring 切面可以应用五种类型的通知：
+- before：前置通知，在一个方法执行前被调用。
+- after: 在方法执行之后调用的通知，无论方法执行是否成功。
+- after-returning: 仅当方法成功完成后执行的通知。
+- after-throwing: 在方法抛出异常退出时执行的通知。
+- around: 在方法执行之前和之后调用的通知。
+## 切点
+切入点是一个或一组连接点，通知将在这些位置执行。
+可以通过表达式或匹配的方式指明切入点。
+## 什么是引入?
+引入允许我们在已存在的类中增加新的方法和属性。
+## 什么是目标对象?
+被一个或者多个切面所通知的对象。它通常是一个代理对象。也指被通知（advised）对象。
+## 什么是代理?
+代理是通知目标对象后创建的对象。从客户端的角度看，代理对象和目标对象是一样的。
+## 有几种不同类型的自动代理？
+BeanNameAutoProxyCreator
+DefaultAdvisorAutoProxyCreator
+Metadata autoproxying
+## 什么是织入。什么是织入应用的不同点？
+织入是将切面和到其他应用类型或对象连接或创建一个被通知对象的过程。
+织入可以在编译时，加载时，或运行时完成。
+## 解释基于 XML Schema 方式的切面实现。
+在这种情况下，切面由常规类以及基于 XML 的配置实现。
+## 解释基于注解的切面实现
+在这种情况下(基于@AspectJ 的实现)，涉及到的切面声明的风格与带有 java5 标注的普通 java 类一致。
+# Spring 的 MVC
+## 什么是 Spring 的 MVC 框架？
+Spring 配备构建 Web 应用的全功能 MVC 框架。Spring 可以很便捷地和其他 MVC 框架集成，如Struts，Spring 的 MVC 框架用控制反转把业务对象和控制逻辑清晰地隔离。它也允许以声明的方式把请求参数和业务对象绑定。
+## DispatcherServlet
+Spring 的 MVC 框架是围绕 DispatcherServlet 来设计的，它用来处理所有的 HTTP 请求和响应。
+## WebApplicationContext
+WebApplicationContext 继承了 ApplicationContext 并增加了一些 WEB 应用必备的特有功能，它不同于一般的 ApplicationContext ，因为它能处理主题，并找到被关联的 servlet。
+## 什么是 Spring MVC 框架的控制器？
+控制器提供一个访问应用程序的行为，此行为通常通过服务接口实现。控制器解析用户输入并将其转换为一个由视图呈现给用户的模型。Spring 用一个非常抽象的方式实现了一个控制层，允许用户创建多种用途的控制器。
+## @Controller 注解
+该注解表明该类扮演控制器的角色，Spring 不需要你继承任何其他控制器基类或引用 Servlet API。
+## @RequestMapping 注解
+该注解是用来映射一个 URL 到一个类或一个特定的方处理法上。
 
 ## Spring框架在其设计和实现中广泛运用了多种设计模式：
 
