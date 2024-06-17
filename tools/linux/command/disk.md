@@ -2,6 +2,14 @@
 
 内存命令
 
+### du -sh
+```perforce
+du -sh .          //查看当前目录的总大小
+du -sh core*      //列出所有core开头的目录或文件大小
+du -sh *      //列出所有子目录的大小
+```
+
+
 ### df -h
 ```perforce
 $ df -h
